@@ -1,0 +1,66 @@
+body {
+  font-family: 'Indie Flower', cursive;
+  margin:25%, auto, 25%,auto;
+}
+.game--title {
+  font-family: 'Indie Flower', cursive;
+  margin:25%, auto, 25%,auto;
+}
+
+#displayBoard {
+  font-family: 'Indie Flower', cursive;
+  padding:55%, auto, 25%,auto;
+  margin:25%, auto, 25%,auto;
+}
+
+
+button, h2 {
+  font-family: 'Indie Flower', cursive;
+  
+  margin:25%, auto, 25%,auto;
+  margin-left: 5%;
+  margin-top: 2%;
+  text-align: centre;
+}
+
+h1 {
+  font-family: 'Indie Flower', cursive;  
+  margin:25%, auto, 25%,auto;
+  margin-left: 5%;
+  margin-top: 2%;
+  text-align: centre;
+  border-bottom: 3px solid red;
+  width: 90%;
+}
+#start-game {
+  font-family: 'Indie Flower', cursive;
+  padding:25%, auto, 25%,auto;
+  margin:25%, auto, 25%,auto;
+}
+section {
+  text-align: center;
+}
+.game--container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 306px;
+  margin: 50px auto;
+}
+.cells {
+  font-family: 'Indie Flower', cursive;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 0 1px white;
+  border: 1px solid pink;
+  background: pink;
+  cursor: pointer;
+line-height: 100px;
+  font-size: 60px;
+  align-items: center;
+  text-align: center;
+  color: blueviolet;
+}
+
+.unClick {
+ pointer-events: none;
+}
