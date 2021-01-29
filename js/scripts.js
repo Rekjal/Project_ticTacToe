@@ -131,6 +131,7 @@ $(document).ready(function () {
                     if ((player1.winStatus === false) && (player2.winStatus === false)) {
                        $("div#result").text("Game over. It's a Draw");
                        nonClickable();
+                       $('.game-restart').show();
                     }
                 }
             }
