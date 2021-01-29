@@ -6,7 +6,7 @@ function Player(playerName, playSymbol, winStatus, activeUser, boardStatus) { //
     this.playerName = playerName;
     this.playSymbol = playSymbol;
     this.winStatus = winStatus;
-    this.activeUser = activeUser;    
+    this.activeUser = activeUser;
     this.boardStatus = ['', '', '', '', '', '', '', '', ''];
 }
 
@@ -29,26 +29,40 @@ $(document).ready(function () {
     $('#start-game').click(function (e) {  //Show Starts here. Why e?
         $('#start-game').hide();           //Hide start game button
         e.preventDefault();
-        $('.hide').show()
-        startGame();
+
+        $('.formCSS').show();
+        $('button#btnn').click(function (e) {
+            $('.formCSS').hide();
+            let symbol = $("input#symbol").val();
+            startGame(symbol);
+            e.preventDefault();
+
+
+        });
+
+
     });
 
     var player1 = new Player("Player-1", "X", false, ['', '', '', '', '', '', '', '', ''], false);
     var player2 = new Player("Player-2", "O", false, ['', '', '', '', '', '', '', '', ''], false);
 
-    function startGame() {
-        player1.playSymbol = prompt('Please choose X or O').toUpperCase();
-        if (player1.playSymbol === 'X') {
-            player2.playSymbol = 'O'
-        } else {
-            player2.playSymbol = 'X'
-        };
+    function startGame(symbol) {
+        // player1.playSymbol = prompt('Please choose a Character').toUpperCase();
+        // if (player1.playSymbol === symbol) {
+        //     player2.playSymbol = 'O'
+        // } else {
+        //     player2.playSymbol = 'X'
+        // };
+        player1.playSymbol = symbol;
+        player2.playSymbol = 'x';
+
+        $('.hide').show();
     }
 
     function nonClickable() {
         if (player1.winStatus === true || player2.winStatus === true) {
             $('.cells').addClass('unClick');
-            
+
         }
     };
 
@@ -62,62 +76,47 @@ $(document).ready(function () {
         $('#' + cellLocation).append(player2.playSymbol);
         board[cellLocation] = player2.playSymbol;
         player2.boardStatus[cellLocation] = player2.playSymbol;
-        checkPlayerWin();
+        checkPlayerWin(player2, player2.playSymbol);
     }
 
-    function checkPlayerWin() {
+    function checkPlayerWin(player, playSymbol) {
         if (
-            ((board[6] == player1.playSymbol && board[7] == player1.playSymbol && board[8] == player1.playSymbol) || // bottom row
-             (board[3] == player1.playSymbol && board[4] == player1.playSymbol && board[5] == player1.playSymbol) || // middle row
-             (board[0] == player1.playSymbol && board[1] == player1.playSymbol && board[2] == player1.playSymbol) || // top row
-             (board[0] == player1.playSymbol && board[3] == player1.playSymbol && board[6] == player1.playSymbol) || // down the left
-             (board[1] == player1.playSymbol && board[4] == player1.playSymbol && board[7] == player1.playSymbol) || // down the middle
-             (board[2] == player1.playSymbol && board[5] == player1.playSymbol && board[8] == player1.playSymbol) || // down the right
-             (board[0] == player1.playSymbol && board[4] == player1.playSymbol && board[8] == player1.playSymbol) || // diagonal
-             (board[6] == player1.playSymbol && board[4] == player1.playSymbol && board[2] == player1.playSymbol)))  // diagonal
-        {            
-            $('.game-restart').show();
-            player1.winStatus = true;
-            alert(player1.playerName + " You have won!!!!");
-            console.log(`WIN Loop: Player1 array playerName:playSymbol:winStatus:boardStatus::::${player1.playerName}:${player1.playSymbol}:${player1.winStatus}:${player1.boardStatus}`);
-            nonClickable();
-        }
-       else if (
-            ((board[6] == player2.playSymbol && board[7] == player2.playSymbol && board[8] == player2.playSymbol) || // bottom row
-             (board[3] == player2.playSymbol && board[4] == player2.playSymbol && board[5] == player2.playSymbol) || // middle row
-             (board[0] == player2.playSymbol && board[1] == player2.playSymbol && board[2] == player2.playSymbol) || // top row
-             (board[0] == player2.playSymbol && board[3] == player2.playSymbol && board[6] == player2.playSymbol) || // down the left
-             (board[1] == player2.playSymbol && board[4] == player2.playSymbol && board[7] == player2.playSymbol) || // down the middle
-             (board[2] == player2.playSymbol && board[5] == player2.playSymbol && board[8] == player2.playSymbol) || // down the right
-             (board[0] == player2.playSymbol && board[4] == player2.playSymbol && board[8] == player2.playSymbol) || // diagonal
-             (board[6] == player2.playSymbol && board[4] == player2.playSymbol && board[2] == player2.playSymbol)))  // diagonal
+            ((board[6] == playSymbol && board[7] == playSymbol && board[8] == playSymbol) || // bottom row
+                (board[3] == playSymbol && board[4] == playSymbol && board[5] == playSymbol) || // middle row
+                (board[0] == playSymbol && board[1] == playSymbol && board[2] == playSymbol) || // top row
+                (board[0] == playSymbol && board[3] == playSymbol && board[6] == playSymbol) || // down the left
+                (board[1] == playSymbol && board[4] == playSymbol && board[7] == playSymbol) || // down the middle
+                (board[2] == playSymbol && board[5] == playSymbol && board[8] == playSymbol) || // down the right
+                (board[0] == playSymbol && board[4] == playSymbol && board[8] == playSymbol) || // diagonal
+                (board[6] == playSymbol && board[4] == playSymbol && board[2] == playSymbol)))  // diagonal
         {
             $('.game-restart').show();
-            player2.winStatus = true;
-            alert(player2.playerName + " You have won!!!!");            
-            console.log(`WIN Loop: Player2 array playerName:playSymbol:winStatus:boardStatus::::${player2.playerName}:${player2.playSymbol}:${player2.winStatus}:${player2.boardStatus}`);
+            player.winStatus = true;
+            // alert(player.playerName + "line 81 You have won!!!!");
+            $("div#result").text(player.playerName + " You have won!!!!")
+            console.log(`IN Loop: player array playerName:playSymbol:winStatus:boardStatus::::${player.playerName}:${player.playSymbol}:${player.winStatus}:${player.boardStatus}`);
             nonClickable();
         }
         else {
-            console.log(`      Non-WIN Loop: Player1 array playerName:playSymbol:winStatus:boardStatus::::${player1.playerName}:${player1.playSymbol}:${player1.winStatus}:${player1.boardStatus}`);
-            console.log(`      Non-WIN Loop: Player2 array playerName:playSymbol:winStatus:boardStatus::::${player2.playerName}:${player2.playSymbol}:${player2.winStatus}:${player2.boardStatus}`);
+            console.log(`Non-WIN Loop: Player1 array playerName:playSymbol:winStatus:boardStatus::::${player.playerName}:${player.playSymbol}:${player.winStatus}:${player.boardStatus}`);
         }
     }
-    
+
     $('.cells').each(function (cell) {
         $('#' + cell).click(function () {
-            //console.log("Click Detected");
-            if ((board[cell] == '') && (player1.winStatus === false) && (player2.winStatus === false) ){
-               checkPlayerWin(); 
-
-			   $('#' + cell).append(player1.playSymbol);
+            console.log("Click Detected cell is " + cell);
+            if ((board[cell] == '') && (player1.winStatus === false) && (player2.winStatus === false)) {
+                $('#' + cell).text(player1.playSymbol);
+                // setTimeout(function () {
+                    checkPlayerWin(player1, player1.playSymbol);
+                // }, 2300);
                 board[cell] = player1.playSymbol;
-                player1.boardStatus[cell] = player1.playSymbol; 
-                player1.activeUser = true;                  
+                player1.boardStatus[cell] = player1.playSymbol;
+                player1.activeUser = true;
                 console.log(`Main loop: Player1 array playerName:playSymbol:winStatus:boardStatus::::${player1.playerName}:${player1.playSymbol}:${player1.winStatus}:${player1.boardStatus}`);
-               // setTimeout(function () {
-                    checkPlayerWin(); 
-               // }, 100);      
+                // setTimeout(function () {
+                checkPlayerWin(player1, player1.playSymbol);
+                // }, 100);      
                 if (board.includes('')) {
                     if ((player1.winStatus === false) && (player2.winStatus === false)) {
                         console.log("Calling ComputerTurn")
@@ -125,7 +124,13 @@ $(document).ready(function () {
                         player2.activeUser = true;
                         setTimeout(function () {
                             computerTurn();
-                        }, 800); 
+                        }, 800);
+                    }
+                }
+                else if (!board.includes('')) {
+                    if ((player1.winStatus === false) && (player2.winStatus === false)) {
+                       $("div#result").text("Game over. It's a Draw");
+                       nonClickable();
                     }
                 }
             }

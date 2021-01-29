@@ -11,24 +11,35 @@
 </head>
 
 <body>
-
-  <h1>Tic Tac Toe</h1>
-  <button id="start-game">Start Game</button>
-  <div class="game--container hide">
-    <div id="0" class="cells"></div>
-    <div id="1" class="cells"></div>
-    <div id="2" class="cells"></div>
-    <div id="3" class="cells"></div>
-    <div id="4" class="cells"></div>
-    <div id="5" class="cells"></div>
-    <div id="6" class="cells"></div>
-    <div id="7" class="cells"></div>
-    <div id="8" class="cells"></div>
-
+  <div class="container">
+    <h1>Tic Tac Toe</h1>
+    <button id="start-game">Start Game</button>
+    <form id="entry" class="form-group block formCSS">
+      <!-- <div class="formDiv">
+        <input id="symbol" type="text" placeholder="Enter Symbol">
+        <button id="btnn" class="btn btn-success btnColor" type="submit">Start!</button>
+      </div> -->
+      <div class="input-group">
+        <input type="text" class="form-control inputWidth" id = "symbol" placeholder="Enter Symbol">
+        <span class="input-group-btn">
+             <button class="btn btn-default" type="button" id="btnn">Go!</button>
+        </span>
+     </div>
+    </form>
+    <div class="game--container hide">
+      <div id="0" class="cells"></div>
+      <div id="1" class="cells"></div>
+      <div id="2" class="cells"></div>
+      <div id="3" class="cells"></div>
+      <div id="4" class="cells"></div>
+      <div id="5" class="cells"></div>
+      <div id="6" class="cells"></div>
+      <div id="7" class="cells"></div>
+      <div id="8" class="cells"></div>
+    </div>
+    <div id="result"></div>
+    <button class="game-restart">Restart Game</button>
   </div>
-  <button class="game-restart">Restart Game</button>
-
-  <h2 class="game--status"></h2>
 </body>
 
 </html>

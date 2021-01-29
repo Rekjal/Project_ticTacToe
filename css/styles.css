@@ -64,3 +64,28 @@ line-height: 100px;
 .unClick {
  pointer-events: none;
 }
+
+#result {
+  font-size: 30px;
+  font-weight: 700;
+  /* margin: auto;
+  width: 90%; */
+  text-align: center;
+}
+
+.formCSS {
+  display: none;
+  font-family: 'Indie Flower', cursive;
+  padding:25%, auto, 25%,auto;
+  margin:25%, auto, 25%,auto;
+}
+
+.formDiv {
+  margin-top: 50px;
+  margin-left: 58px;
+}
+
+.inputWidth {
+  margin:auto;
+  width: 50%;
+}
