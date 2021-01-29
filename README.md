@@ -16,7 +16,7 @@ Once the game has a winner or there is a draw, a dialog would appear informing o
 ## Setup/Installation Requirements
 1. Clone this repository.
 2. To run program open **_index.html_** from browser
-3. Page is also hosted on [Github](https://rekjal.github.iohttps://github.com/Rekjal/Project_ticTacToe)
+3. Page is also hosted on [Github](https://github.com/Rekjal/Project_ticTacToe)
 
 ## Known Bugs
 
